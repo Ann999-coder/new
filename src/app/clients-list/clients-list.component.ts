@@ -12,9 +12,21 @@ import { ClientService } from '../client.service';
 export class ClientsListComponent implements OnInit {
   closeResult = '';
   client:Client[] | undefined;
+  clnt = {
+
+    company: '',
+    website: '',
+    contact: '',
+    email: '',
+    userName: '',
+    password: ''
+
+    };
+
   constructor(public clientservice:ClientService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
+   this.getAll();
   }
 
   open(content: any) {
@@ -35,11 +47,50 @@ export class ClientsListComponent implements OnInit {
     }
   }
 
-  onSubmit(form:NgForm){
+  //onSubmit(form:NgForm){
 
-    console.log(form.value);
+    //console.log(form.value);
   
-    this.clientservice.create(form.value).subscribe(data =>{console.log("data"+ data);});
+    //this.clientservice.create(form.value).subscribe(data =>{console.log("data"+ data);});
+  //}
+
+  createClient(): void {
+
+    const data = {
+      
+      company: this.clnt.company,
+      website: this.clnt.website,
+      contact: this.clnt.contact,
+      email: this.clnt.email,
+      userName: this.clnt.userName,
+      password: this.clnt.password
+  
+    };
+    this.clientservice.create(data)
+      .subscribe(
+        response => {
+          
+          if(response =="OK"){
+            alert("Registration Successfull");
+            
+          }
+
+        },
+        error => {
+          console.log(error);
+        });
   }
+
+  delete(id : number):void
+  {
+    this.clientservice.delete(id).subscribe( data =>{
+    });
+    
+  }
+  
+
+  getAll(): void {
+    this.clientservice.getClientAll().subscribe(client => this.client= client);
+ }
 
 }

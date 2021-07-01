@@ -6,7 +6,7 @@ export class Team {
     "email":string;
     "contact":string;
     "password":string;
-    "status":number;
+    "status":string;
 
 }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Project } from '../project';
+import { Team } from '../team';
 import { TeamService } from '../team.service';
 
 @Component({
@@ -12,10 +13,22 @@ import { TeamService } from '../team.service';
 export class TeamsListComponent implements OnInit {
 
   closeResult = '';
-  project:Project[] | undefined;
+  team:Team[] | undefined;
+  tm = {
+
+    firstName: '',
+    lastName: '',
+    email: '',
+    contact: '',
+    password: '',
+    status: ''
+
+    };
+
   constructor(public teamservice:TeamService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.getAll();
   }
 
   open(content: any) {
@@ -36,13 +49,52 @@ export class TeamsListComponent implements OnInit {
     }
   }
 
-  onSubmitt(form:NgForm){
+  //onSubmitt(form:NgForm){
 
-    console.log(form.value);
+    //console.log(form.value);
   
-    this.teamservice.create(form.value).subscribe(data =>{console.log("data"+ data);});
+    //this.teamservice.create(form.value).subscribe(data =>{console.log("data"+ data);});
+  //}
+
+  createTeam(): void {
+
+    const data = {
+      
+      firstName: this.tm.firstName,
+      lastName: this.tm.lastName,
+      email: this.tm.email,
+      contact: this.tm.contact,
+      password: this.tm.password,
+      status: this.tm.status
+  
+    };
+    this.teamservice.create(data)
+      .subscribe(
+        response => {
+          
+          if(response =="OK"){
+            alert("Registration Successfull");
+            
+          }
+
+        },
+        error => {
+          console.log(error);
+        });
   }
 
+
+  delete(id : number):void
+  {
+    this.teamservice.delete(id).subscribe( data =>{
+    });
+    
+  }
+  
+
+  getAll(): void {
+    this.teamservice.getTeamAll().subscribe(team => this.team= team);
+ }
 
 
 }

@@ -4,18 +4,23 @@ import { AddClientComponent } from './add-client/add-client.component';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { AddTeamComponent } from './add-team/add-team.component';
 import { ClientsListComponent } from './clients-list/clients-list.component';
+import { EditclientComponent } from './clients-list/editclient/editclient.component';
 import { EditComponent } from './projects-list/edit/edit.component';
 import { ProjectsListComponent } from './projects-list/projects-list.component';
+import { EditteamComponent } from './teams-list/editteam/editteam.component';
 import { TeamsListComponent } from './teams-list/teams-list.component';
 
 const routes: Routes = [
-                        { path: 'clients', component: ClientsListComponent },
+                        { path: 'client', component: ClientsListComponent },
                         { path: 'project', component: ProjectsListComponent },
-                        { path: 'teams', component: TeamsListComponent },
+                        { path: 'team', component: TeamsListComponent },
                         { path: 'addclient', component: AddClientComponent },
                         { path: 'addproject', component: AddProjectComponent },
                         { path: 'addteam', component: AddTeamComponent },
-                        {path:'project/edit/:id',component:EditComponent}
+                        {path:'project/edit/:id',component:EditComponent},
+                        {path:'client/edit/:id',component:EditclientComponent},
+                        {path:'team/edit/:id',component:EditteamComponent}
+              
                         ];
 
 @NgModule({

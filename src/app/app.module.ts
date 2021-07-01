@@ -14,6 +14,8 @@ import { TeamsListComponent } from './teams-list/teams-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditComponent } from './projects-list/edit/edit.component';
+import { EditteamComponent } from './teams-list/editteam/editteam.component';
+import { EditclientComponent } from './clients-list/editclient/editclient.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { EditComponent } from './projects-list/edit/edit.component';
     ClientsListComponent,
     ProjectsListComponent,
     TeamsListComponent,
-    EditComponent
+    EditComponent,
+    EditteamComponent,
+    EditclientComponent
   
   ],
   imports: [

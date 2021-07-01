@@ -16,18 +16,25 @@ export class ProjectService {
   private apiServer = "http://localhost:8090/project";
 
   constructor(private httpClient: HttpClient) {}
-    create(p:Project) {
+    //create(p:Project) {
      
-      const headers = { 'content-type': 'application/json'}  
-       const body=JSON.stringify(p);
-       console.log('project'+body)
-      return this.httpClient.post(this.apiServer + '/save', body);
+      //const headers = { 'content-type': 'application/json'}  
+       //const body=JSON.stringify(p);
+       //console.log('project'+body)
+     // return this.httpClient.post(this.apiServer + '/save', body);
       
+    //}
+
+    create(data: { projectName: string; type: string; subject: string; }): Observable<any> {
+  
+      return this.httpClient.post(this.apiServer + '/save', data);
+  
     }
+  
    
     getprojectByID(id : number){
 
-      return this.httpClient.get<Project>(this.apiServer +id)
+      return this.httpClient.get<Project>(this.apiServer +'/edit/'+id)
     }
 
     delete(id :number){
@@ -37,10 +44,10 @@ export class ProjectService {
      
     }
 
-    //update(id ,data){
+    update(id: number ,data: any){
 
-      //return this.httpClient.put(this.apiServer + id+ '/update' +,data)
-    //}
+      return this.httpClient.put(this.apiServer +'/update/' + id,data)
+    }
 
     getProjectAll(): Observable<Project[]> {
       return this.httpClient.get<Project[]>(this.apiServer +"/all" )

@@ -13,6 +13,15 @@ import { ProjectService } from '../project.service';
 export class ProjectsListComponent implements OnInit {
   closeResult = '';
   project:Project[] | undefined;
+  proj = {
+
+    projectName: '',
+    type: '',
+    subject: ''
+
+    };
+
+
 
   constructor(public projectservice:ProjectService,private modalService: NgbModal) { }
 
@@ -39,23 +48,44 @@ export class ProjectsListComponent implements OnInit {
     }
   }
 
-  onSubmitt(form:NgForm){
+  //onSubmitt(form:NgForm){
 
-    console.log(form.value);
+    //console.log(form.value);
   
-    this.projectservice.create(form.value).subscribe(data =>{console.log("data"+ data);});
+    //this.projectservice.create(form.value).subscribe(data =>{console.log("data"+ data);});
+  //}
+
+  createProject(): void {
+
+    const data = {
+      
+      projectName: this.proj.projectName,
+      type: this.proj.type,
+      subject: this.proj.subject
+
+    };
+    this.projectservice.create(data)
+      .subscribe(
+        response => {
+          
+          if(response =="OK"){
+            alert("Registration Successfull");
+            
+          }
+
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   delete(id : number):void
 {
   this.projectservice.delete(id).subscribe( data =>{
   });
+  
 }
 
-//updateStudent(){
-
-  
-//}
 
   getAll(): void {
     this.projectservice.getProjectAll().subscribe(project => this.project = project);

@@ -14,12 +14,31 @@ export class TeamService {
 
   constructor(private httpClient: HttpClient) { }
 
-  create(t:Team) {
-     
-    //const headers = { 'content-type': 'application/json'}  
-     const body=JSON.stringify(t);
-     console.log('project'+body)
-    return this.httpClient.post(this.apiServer + '/save', body);
+  create(data: { firstName: string; lastName: string; email: string; contact: string; password: string; status: string;  }): Observable<any> {
+  
+    return this.httpClient.post(this.apiServer + '/save', data);
+
+  }
+
+  getteamID(id : number){
+
+    return this.httpClient.get<Team>(this.apiServer +'/edit/'+id)
+  }
+
+  delete(id :number){
+ 
+    console.log("id"+id)
+    return this.httpClient.delete<Team>(this.apiServer + '/delete/' + id,)
+   
+  }
+
+  update(id: number ,data: any){
+
+    return this.httpClient.put(this.apiServer +'/update/' + id,data)
+  }
+
+  getTeamAll(): Observable<Team[]> {
+    return this.httpClient.get<Team[]>(this.apiServer +"/all" )
     
   }
 }

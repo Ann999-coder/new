@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from 'src/app/project.service';
+import { ProjectsListComponent } from '../projects-list.component';
 
 @Component({
   selector: 'app-edit',
@@ -10,7 +11,7 @@ import { ProjectService } from 'src/app/project.service';
 })
 export class EditComponent implements OnInit {
 
-  id: number | undefined;
+  id: number | any;
   header: string | undefined;
   router: any;
   project: any;
@@ -43,6 +44,20 @@ export class EditComponent implements OnInit {
      
   
     })
+  }
+
+  updateProjectInfo(){
+    
+    
+    
+    this.projectservice.update(this.route.snapshot.params.id,this.edit.value).subscribe(data =>{
+     
+      console.log("data"+data);
+
+      alert("Update");
+      
+  
+   });
   }
 
 }
