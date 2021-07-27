@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditComponent } from './projects-list/edit/edit.component';
 import { EditteamComponent } from './teams-list/editteam/editteam.component';
 import { EditclientComponent } from './clients-list/editclient/editclient.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { EditclientComponent } from './clients-list/editclient/editclient.compon
     TeamsListComponent,
     EditComponent,
     EditteamComponent,
-    EditclientComponent
+    EditclientComponent,
+    RegisterComponent,
+    LoginComponent
   
   ],
   imports: [

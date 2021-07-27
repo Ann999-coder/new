@@ -70,6 +70,7 @@ export class ProjectsListComponent implements OnInit {
           
           if(response =="OK"){
             alert("Registration Successfull");
+            window.location.reload();
             
           }
 
@@ -83,6 +84,7 @@ export class ProjectsListComponent implements OnInit {
 {
   this.projectservice.delete(id).subscribe( data =>{
   });
+  window.location.reload();
   
 }
 

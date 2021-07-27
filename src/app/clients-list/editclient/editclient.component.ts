@@ -57,6 +57,7 @@ export class EditclientComponent implements OnInit {
       console.log("data"+data);
 
       alert("Update");
+      window.location.reload();
       
   
    });

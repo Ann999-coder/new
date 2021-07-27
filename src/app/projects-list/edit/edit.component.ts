@@ -55,6 +55,7 @@ export class EditComponent implements OnInit {
       console.log("data"+data);
 
       alert("Update");
+      window.location.reload();
       
   
    });

@@ -72,6 +72,7 @@ export class ClientsListComponent implements OnInit {
           
           if(response =="OK"){
             alert("Registration Successfull");
+            window.location.reload();
             
           }
 
@@ -85,6 +86,7 @@ export class ClientsListComponent implements OnInit {
   {
     this.clientservice.delete(id).subscribe( data =>{
     });
+    window.location.reload();
     
   }
   

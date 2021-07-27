@@ -74,6 +74,7 @@ export class TeamsListComponent implements OnInit {
           
           if(response =="OK"){
             alert("Registration Successfull");
+            window.location.reload();
             
           }
 
@@ -88,7 +89,7 @@ export class TeamsListComponent implements OnInit {
   {
     this.teamservice.delete(id).subscribe( data =>{
     });
-    
+    window.location.reload();
   }
   
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { TeamService } from 'src/app/team.service';
+import { TeamsListComponent } from '../teams-list.component';
 
 @Component({
   selector: 'app-editteam',
@@ -59,6 +60,9 @@ export class EditteamComponent implements OnInit {
       console.log("data"+data);
 
       alert("Update");
+      window.location.reload();
+      
+      
       
   
    });
